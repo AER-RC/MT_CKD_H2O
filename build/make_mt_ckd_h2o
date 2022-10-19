@@ -1,0 +1,87 @@
+#     path:      $HeadURL$
+#     author:    $Author$
+#     revision:  $Revision$
+#     created:   $Date$
+#
+# Makefile for mt_ckd_h2o
+# From mt_ckd_h2o/build directory, type: gmake -f make_mt_ckd_h2o <TARGET>
+
+# Include file containing user input. Directory is referenced to 
+# parent directory and common build rules
+include makefile.common
+
+###############################
+# Set variables/
+###############################
+#Set version name.  Used in the default OUTPUT and OBJPATH variables.  If you
+# change those two variables from what is provided here, no need to set this variable.
+
+PRODUCT = mt_ckd_h2o
+VERSION = v4.0
+
+# Define makefile name
+MAKEFILE=make_$(PRODUCT)
+ifeq ($(wildcard ./addlibs.inc), ./addlibs.inc)
+$(info "include  ./addlibs.inc" )
+include  ./addlibs.inc
+endif
+
+
+$(info "NETCDF   :: $(NETCDF)" )
+$(info "FC       :: $(FC)" )
+$(info "PRODUCT  :: $(PRODUCT)" )
+
+# Set name of mt_ckd_h2o executable.  
+OUTPUT = ${PRODUCT}_$(VERSION)_$(PLTFRM)_$(FC_TYPE)_$(P_TYPE)
+
+# Set variables specific to LBLRTM compile
+ifeq ($(P_TYPE),dbl)
+     FFTEXT=_dbl
+endif
+
+# Set directory for object files.  
+OBJPATH = ${PRODUCT}_$(VERSION)_$(PLTFRM)_$(FC_TYPE)_$(P_TYPE).obj
+
+# Set directory containing source files, relative to directory from which
+# you are executing the makefile
+SRCPATH = ../src
+
+# Files contained in src directory.  If additional .f90 files are added,
+# add to this list and to build instruction. 
+SRCS = drive_mt_ckd_h2o.f90 read_module.f90 mt_ckd_h2o_module.f90 phys_consts.f90
+
+LIB_NETCDF = $(NCL)
+INC_NETCDF = $(NCI)
+LDFLAG = -L$(LIB_NETCDF) -lnetcdff -lnetcdf $(ADDLIB)
+
+$(info "SRCS  :: $(SRCS)" )
+
+
+# Object file names
+OBJECTS = ${SRCS:.f90=.o}
+
+## Define dependencies
+$(OBJPATH)/read_module.o:       $(SRCPATH)/read_module.f90
+	$(FC) -c $(FCFLAG) -I$(SRCPATH) -I$(INC_NETCDF) $< -o $@
+read_file.mod:  $(SRCPATH)/read_module.f90
+	$(FC) -c $(FCFLAG) -I$(INC_NETCDF) $< -o $(OBJPATH)/read_module.o
+
+
+$(OBJPATH)/mt_ckd_h2o_module.o:	$(SRCPATH)/mt_ckd_h2o_module.f90 phys_consts.mod read_file.mod  
+	$(FC) -c   $(FCFLAG) -I$(SRCPATH) $< -o $@
+mt_ckd_h2o.mod:	$(SRCPATH)/mt_ckd_h2o_module.f90
+	$(FC) -c $(FCFLAG)  $< -o $(OBJPATH)/mt_ckd_h2o_module.o
+
+
+$(OBJPATH)/drive_mt_ckd_h2o.o: $(SRCPATH)/drive_mt_ckd_h2o.f90  read_file.mod phys_consts.mod mt_ckd_h2o.mod
+	$(FC) -c $(FCFLAG) -I$(SRCPATH) -I$(INC_NETCDF) $< -o $@
+
+phys_consts.mod:        $(SRCPATH)/phys_consts.f90
+	$(FC) -c $(FCFLAG) $< -o $(OBJPATH)/phys_consts.o
+$(OBJPATH)/phys_consts.o:       $(SRCPATH)/phys_consts.f90
+	$(FC) -c $(FCFLAG) $< -o $@
+
+
+build : $(OBJPATH)/drive_mt_ckd_h2o.o   $(OBJPATH)/read_module.o $(OBJPATH)/mt_ckd_h2o_module.o $(OBJPATH)/phys_consts.o
+	$(FC) $(FCFLAG) -o ../$(OUTPUT) $^  $(LDFLAG)
+
