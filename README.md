@@ -56,4 +56,4 @@ A simple example driver (drive_mt_ckd_h2o.f90) has been provided; it runs from a
 cd run_example
 ../mt_ckd_h2o_v4.0_linux_gnu_dbl < mt_ckd.config
 
-The absco-ref_wv-mt-ckd.nc file and the output from the driver can be found in the tar file below.
+The absco-ref_wv-mt-ckd.nc file and the output from the driver can be found in a separate example package.
