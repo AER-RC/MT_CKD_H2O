@@ -57,3 +57,5 @@ cd run_example
 ../mt_ckd_h2o_v4.0_linux_gnu_dbl < mt_ckd.config
 
 The absco-ref_wv-mt-ckd.nc file and the output from the driver can be found in a separate example package.
+
+[This may not be the best location of the netcdf file.
