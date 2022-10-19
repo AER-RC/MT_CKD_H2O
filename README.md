@@ -7,7 +7,7 @@ LBLRTM and MT_CKD are linked.The current versions are:
 
 
 | LBLRTM Release | MT_CKD Release |
-| :---: | :---: | :---: |
+| :---: | :---: | 
 | [v12.14](https://github.com/AER-RC/LBLRTM/releases/tag/v12.14) | [v4.0](https://github.com/AER-RC/MT_CKD_H2O/releases/tag/4.0) |
 
 If any build or run issues occur, please [create an issue](https://github.com/AER-RC/MT_CKD_H2O/issues) or contact the [AER-RC Group](https://github.com/AER-RC).
