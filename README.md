@@ -59,7 +59,7 @@ Other compilers may work but only gfortran has been tested so far.
 A simple example driver (drive_mt_ckd_h2o.f90) has been provided; it runs from a configuration file (mt_ckd.config) and generates a file of water vapor continuum absorption coefficients (mt_ckd_h2o_output.nc) for the pressure, temperature, water vapor mixing ratio and spectral range and resolution specified in the configuration file. To run the driver in the run_example directory:
 
 cd run_example
+ln -s ../data/absco-ref_wv-mt-ckd.nc .
 ../mt_ckd_h2o_v4.0_linux_gnu_dbl < mt_ckd.config
 
-The absco-ref_wv-mt-ckd.nc file and the output from the driver can be found in a separate example package.
 
