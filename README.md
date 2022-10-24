@@ -1,14 +1,19 @@
 # Introduction
 
-This repository contains code for the MT-CKD water vapor continuum model used in [LBLRTM](https://github.com/AER-RC/LBLRTM); the code is written as a callable FORTRAN subroutine that reads a netCDF file (absco-ref_wv-mt-ckd.nc) containing the water vapor continuum coefficients at the reference pressure and temperature.
-[Eli to add some background MT_CKD info]
+This repository contains code for the MT_CKD water vapor continuum model used in [LBLRTM](https://github.com/AER-RC/LBLRTM); the code is written as a callable FORTRAN subroutine that reads a netCDF file (absco-ref_wv-mt-ckd.nc) containing the water vapor continuum coefficients at the reference pressure and temperature.
 
-LBLRTM and MT_CKD are linked.The current versions are:
+The MT_CKD water vapor continuum model is constrained so that it is consistent with quality analyses of spectral atmospheric measurements. Laboratory measurements are also considered. Keeping the MT_CKD continuum consistent with current observational studies necessitates periodic updates to the water vapor continuum coefficients. Details of the most recent revisions to the MT_CKD water vapor continuum can be found in the “What’s New” Wiki page.
+
+Water vapor continuum coefficients in spectral regions that have not been subject to compelling analyses are determined by a mathematical formulation of the spectral shape associated with each water vapor monomer line. This formulation is applied consistently to all water vapor lines from the microwave to the visible, and the results summed (separately for the self and foreign) to obtain continuum coefficients from 0-20,000 cm-1. This formulation has been derived based on the continuum in spectral regions in which the coefficients are known with low uncertainties.
+
+The MT_CKD water vapor continuum model was first implemented in the line-by-line model LBLRTM v7.0 and has been utilized in all subsequent AER Radiative Transfer models. This new model was developed by E.J. Mlawer, D.C. Tobin and S.A. Clough, using the original CKD formulation as its foundation; hence the name MT_CKD.
+
+MT_CKD is consistent with a calculation of the line absorption is cut off 25 cm-1 from the line center, as is done in LBLRTM. The current versions of each code is:
 
 
-| LBLRTM Release | MT_CKD Release |
+| MT_CKD Release | LBLRTM Release |
 | :---: | :---: | 
-| [v12.14](https://github.com/AER-RC/LBLRTM/releases/tag/v12.14) | [v4.0](https://github.com/AER-RC/MT_CKD_H2O/releases/tag/4.0) |
+| [v4.0](https://github.com/AER-RC/MT_CKD_H2O/releases/tag/4.0)| [v12.14](https://github.com/AER-RC/LBLRTM/releases/tag/v12.14) |
 
 If any build or run issues occur, please [create an issue](https://github.com/AER-RC/MT_CKD_H2O/issues) or contact the [AER-RC Group](https://github.com/AER-RC).
 
@@ -58,4 +63,3 @@ cd run_example
 
 The absco-ref_wv-mt-ckd.nc file and the output from the driver can be found in a separate example package.
 
-[This may not be the best location of the netcdf file.
