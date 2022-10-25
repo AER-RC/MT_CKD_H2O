@@ -8,7 +8,7 @@ Water vapor continuum coefficients in spectral regions that have not been subjec
 
 The MT_CKD water vapor continuum model was first implemented in the line-by-line model LBLRTM v7.0 and has been utilized in all subsequent AER Radiative Transfer models. This new model was developed by E.J. Mlawer, D.C. Tobin and S.A. Clough, using the original CKD formulation as its foundation; hence the name MT_CKD.
 
-MT_CKD is consistent with a calculation of the line absorption is cut off 25 cm-1 from the line center, as is done in LBLRTM. The current version of each code is:
+MT_CKD is consistent with a calculation of the line absorption cut off 25 cm-1 from the line center, as is done in LBLRTM. The current version of each code is:
 
 
 | MT_CKD Release | LBLRTM Release |
