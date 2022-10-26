@@ -1,0 +1,33 @@
+netcdf absco-ref_wv-mt-ckd {
+dimensions:
+	wavenumbers = 2001 ;
+variables:
+	double wavenumbers(wavenumbers) ;
+		wavenumbers:units = "cm-1" ;
+		wavenumbers:description = "Spectral domain of water vapor continuum" ;
+	double self_absco_ref(wavenumbers) ;
+		self_absco_ref:units = "cm**2/molecule cm-1" ;
+		self_absco_ref:description = "Water vapor self continuum absorption coefficients" ;
+	double for_absco_ref(wavenumbers) ;
+		for_absco_ref:units = "cm**2/molecule cm-1" ;
+		for_absco_ref:description = "Water vapor foreign continuum absorption coefficients" ;
+	double self_texp(wavenumbers) ;
+		self_texp:units = "dimensionless" ;
+		self_texp:description = "Temperature exponent for water vapor self continuum" ;
+	double ref_press ;
+		ref_press:units = "mbar" ;
+		ref_press:description = "Reference pressure" ;
+	double ref_temp ;
+		ref_temp:units = "K" ;
+		ref_temp:description = "Reference temperature" ;
+	double ref_h2o_vmr ;
+		ref_h2o_vmr:units = "vmr" ;
+		ref_h2o_vmr:description = "Reference H2O Mixing Ratio" ;
+
+// global attributes:
+		:title = "     The MT_CKD Water Vapor Continuum - v4.0                                    " ;
+		:copyright = "Copyright �, Atmospheric and Environmental Research, Inc., 2022 All rights reserved. This source code was developed as part of the LBLRTM software and is  designed for scientific and research purposes.  Atmospheric and Environmental Research Inc. (AER) grants USER the right to  download, install, use and copy this software for scientific and research purposes only. This software may be redistributed as long as this copyright notice is reproduced on any copy made and appropriate acknowledgment is given to AER. This software or any modified version of this software may not be incorporated into proprietary software or commercial software offered for sale without the express written consent of AER. This software is provided as is without any express or implied warranties." ;
+		:contact = "  Address questions to: aer_contnm@aer.com                                      " ;
+		:reference = "  General reference: Mlawer et al. (2012), doi:10.1098/rsta.2011.0295           " ;
+		:history = "MT_CKD_4.0: water vapor continuum data is now stored in a netCDF file and the code is in a separate module.For previous versions see (http://github.com/AER-RC/MT_CKD).             " ;
+}
