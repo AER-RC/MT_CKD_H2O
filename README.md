@@ -31,13 +31,10 @@ Currently, the latest release is MT_CKD_4.0.1 , and it is recommended that this 
 git checkout tags/4.0.1
 ```
 
-Instead of cloning, users can also download an MT_CKD [tarball](https://github.com/AER-RC/MT_CKD/releases/tag/v3.6) and unpack it:
+Instead of cloning, users can also download an MT_CKD_H20 [tarball](https://github.com/AER-RC/MT_CKD_H2O/releases/tag/4.0.1) and unpack it:
 
 ```
-tar xvf cntnm_v3.6.tar.gz
-mv MT_CKD-3.6 cntnm
-
-[Not true for this version yet]
+tar xvf MT_CKD_H2O-4.0.1.tar.gz
 ```
 
 Though not necessary, the move to `cntnm` is for consistency with previous release packages and the associated documentation.
