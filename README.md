@@ -35,8 +35,8 @@ Instead of cloning, users can also download an MT_CKD_H20 [tarball](https://gith
 
 ```
 tar xvf MT_CKD_H2O-4.0.1.tar.gz
+mv MT_CKD_H2O-4.0.1 cntnm
 ```
-
 Though not necessary, the move to `cntnm` is for consistency with previous release packages and the associated documentation.
 
 # Building
