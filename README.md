@@ -13,7 +13,7 @@ MT_CKD is consistent with a calculation of the line absorption cut off 25 cm-1 f
 
 | MT_CKD Release | LBLRTM Release |
 | :---: | :---: | 
-| [v4.0.1](https://github.com/AER-RC/MT_CKD_H2O/releases/tag/4.0.1)| [v12.14](https://github.com/AER-RC/LBLRTM/releases/tag/v12.14) |
+| [4.0.1](https://github.com/AER-RC/MT_CKD_H2O/releases/tag/4.0.1)| [v12.14](https://github.com/AER-RC/LBLRTM/releases/tag/v12.14) |
 
 If any build or run issues occur, please [create an issue](https://github.com/AER-RC/MT_CKD_H2O/issues) or contact the [AER-RC Group](https://github.com/AER-RC).
 
@@ -58,7 +58,7 @@ A simple example driver (drive_mt_ckd_h2o.f90) has been provided; it runs from a
 ```
 cd run_example
 ln -s ../data/absco-ref_wv-mt-ckd.nc .
-../mt_ckd_h2o_v4.0.1_linux_gnu_dbl < mt_ckd.config
+../mt_ckd_h2o_4.0.1_linux_gnu_dbl < mt_ckd.config
 ```
 
 
