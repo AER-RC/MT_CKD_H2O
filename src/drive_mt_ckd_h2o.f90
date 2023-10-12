@@ -13,7 +13,8 @@
    double precision :: wv1,wv2
    real, dimension(:),allocatable :: sh2o,fh2o
    double precision,dimension(:),allocatable :: wvn
-   logical :: radflag=.FALSE.
+   logical :: radflag=.TRUE.
+   character(len=81) :: mt_version
 
    integer :: nwv,i
    integer :: istat,ncid,id_wv,idvar(3)
@@ -28,7 +29,8 @@
    allocate (sh2o(nwv))
    allocate (fh2o(nwv))
 
-   call mt_ckd_h2o_absco (p_atm,t_atm,h2o_frac,wv1,wv2,dwv,sh2o,fh2o,radflag=radflag)
+   call mt_ckd_h2o_absco (p_atm,t_atm,h2o_frac,wv1,wv2,dwv,sh2o,fh2o,radflag=radflag,mt_version=mt_version)
+   print *,'mt_version ',mt_version
    wvn = wv1+[(i,i=0,nwv-1)]*dwv
 
 ! Create netCDF file
