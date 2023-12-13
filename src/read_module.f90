@@ -47,12 +47,12 @@ MODULE read_file
   end interface
 
   contains
-  function getData(fname, dat,version) result(isError)
+  function getData(fname,FRGNX,dat,version) result(isError)
                       
     character(len=*), intent(in)     :: fname
+    character, intent(in)            :: FRGNX
     type(data2read),  intent(inout)  :: dat
     character(len=*), intent(inout) :: version
-    !character(len=60) :: version
     logical                          :: isError
 
     integer(kind=4)   :: ncid
@@ -93,14 +93,16 @@ MODULE read_file
 
     ! read variables
     call readVarNC(ncid,"wavenumbers",   dat%wavenumber)
-    call readVarNC(ncid,"for_absco_ref",    dat%for_absco_ref)
+    if (FRGNX.EQ.'1') then
+      call readVarNC(ncid,"for_closure_absco_ref",    dat%for_absco_ref)
+    else
+      call readVarNC(ncid,"for_absco_ref",    dat%for_absco_ref)
+    endif
     call readVarNC(ncid,"self_absco_ref",   dat%self_absco_ref)
     call readVarNC(ncid,"self_texp",   dat%self_texp)
     call readVarNC(ncid,"ref_temp",   dat%ref_temp)
     call readVarNC(ncid,"ref_press",   dat%ref_press)
     call readVarNC(ncid,"title",   version)
-    !call readVarNC(ncid,"version_description",   test_version)
-    
     call check( nf_close(ncid) )
 
   end function getData
@@ -176,20 +178,20 @@ MODULE read_file
     real*8,                 intent(inout):: val
     integer(kind=4)                      :: varId
     logical,        optional, intent(in) :: fatal
-    if (dbg) print*, ' ncdfUtil::readDouble '
+    if (dbg) print*, ' ncdfUtil::readDouble1D '
     call check(nf_inq_varid(id, varName, varId), varName, fatal)
     call check(nf_get_var(id, varId, val), varName, fatal)
  end subroutine readDouble
 
-   subroutine readString(id, varName, val, fatal)
+  subroutine readString(id, varName, val, fatal)
     integer(kind=4),        intent(in)   :: id
     character(len=*),       intent(in)   :: varName
     character(len=*),      intent(inout):: val
     integer(kind=4)                      :: varId
     logical,        optional, intent(in) :: fatal
     integer                              :: status
-    if (dbg) print*, ' ncdfUtil::readString '
-    status= nf_get_att(id, NF_GLOBAL, varName, val)
-    !call check(nf_get_att_text(id, NF_GLOBAL,val), varName, fatal)
- end subroutine readString
+  if (dbg) print*, ' ncdfUtil::readString '
+  status= nf_get_att(id, NF_GLOBAL, varName, val)
+  
+  end subroutine readString
 end module read_file
