@@ -18,6 +18,7 @@
 
    integer :: nwv,i
    integer :: istat,ncid,id_wv,idvar(3)
+   character :: FRGNX
 
    namelist /mt_ckd_input/ p_atm,t_atm,h2o_frac,wv1,wv2,dwv
   
@@ -29,7 +30,8 @@
    allocate (sh2o(nwv))
    allocate (fh2o(nwv))
 
-   call mt_ckd_h2o_absco (p_atm,t_atm,h2o_frac,wv1,wv2,dwv,sh2o,fh2o,radflag=radflag,mt_version=mt_version)
+   call mt_ckd_h2o_absco (p_atm,t_atm,h2o_frac,wv1,wv2,dwv,sh2o,fh2o, &
+      FRGNX,radflag=radflag,mt_version=mt_version)
    print *,'mt_version ',mt_version
    wvn = wv1+[(i,i=0,nwv-1)]*dwv
 
