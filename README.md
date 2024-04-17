@@ -13,7 +13,7 @@ MT_CKD is consistent with a calculation of the line absorption cut off 25 cm-1 f
 
 | MT_CKD Release | LBLRTM Release |
 | :---: | :---: | 
-| [4.1](https://github.com/AER-RC/MT_CKD_H2O/releases/tag/4.1)| [v12.15](https://github.com/AER-RC/LBLRTM/releases/tag/v12.15) |
+| [4.1.1](https://github.com/AER-RC/MT_CKD_H2O/releases/tag/4.1.1)| [v12.15.1](https://github.com/AER-RC/LBLRTM/releases/tag/v12.15.1) |
 
 If any build or run issues occur, please [create an issue](https://github.com/AER-RC/MT_CKD_H2O/issues) or contact the [AER-RC Group](https://github.com/AER-RC).
 
@@ -25,17 +25,17 @@ Assuming the output directory should be `MT_CKD_H2O`:
 
 
 
-Currently, the latest release is MT_CKD_4.1 , and it is recommended that this be the version that users clone and checkout (rather than the `master` branch). To do this, one needs to simply checkout the `4.1` tag:
+Currently, the latest release is MT_CKD_4.1.1 , and it is recommended that this be the version that users clone and checkout (rather than the `master` branch). To do this, one needs to simply checkout the `4.1.1` tag:
 
 ```
-git checkout tags/4.1
+git checkout tags/4.1.1
 ```
 
-Instead of cloning, users can also download an MT_CKD_H20 [tarball](https://github.com/AER-RC/MT_CKD_H2O/releases/tag/4.1) and unpack it:
+Instead of cloning, users can also download an MT_CKD_H20 [tarball](https://github.com/AER-RC/MT_CKD_H2O/releases/tag/4.1.1) and unpack it:
 
 ```
-tar xvf MT_CKD_H2O-4.1.tar.gz
-mv MT_CKD_H2O-4.1 cntnm
+tar xvf MT_CKD_H2O-4.1.1.tar.gz
+mv MT_CKD_H2O-4.1.1 cntnm
 ```
 Though not necessary, the move to `cntnm` is for consistency with previous release packages and the associated documentation.
 
@@ -58,7 +58,7 @@ A simple example driver (drive_mt_ckd_h2o.f90) has been provided; it runs from a
 ```
 cd run_example
 ln -s ../data/absco-ref_wv-mt-ckd.nc .
-../mt_ckd_h2o_4.1_linux_gnu_dbl < mt_ckd.config
+../mt_ckd_h2o_4.1.1_linux_gnu_dbl < mt_ckd.config
 ```
 
 

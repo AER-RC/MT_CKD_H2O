@@ -12,7 +12,7 @@ include makefile.common
 # change those two variables from what is provided here, no need to set this variable.
 
 PRODUCT = mt_ckd_h2o
-VERSION = 4.1
+VERSION = 4.1.1
 
 # Define makefile name
 MAKEFILE=make_$(PRODUCT)
