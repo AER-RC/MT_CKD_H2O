@@ -102,7 +102,7 @@ MODULE read_file
     call readVarNC(ncid,"self_texp",   dat%self_texp)
     call readVarNC(ncid,"ref_temp",   dat%ref_temp)
     call readVarNC(ncid,"ref_press",   dat%ref_press)
-    call readVarNC(ncid,"title",   version)
+    call readVarNC(ncid,"Title",   version)
     call check( nf_close(ncid) )
 
   end function getData
